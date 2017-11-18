@@ -1,0 +1,290 @@
+created: 20171015232611361
+creator: 0.0.0.0
+modified: 20171027060337560
+modifier: Josh F
+module-type: widget
+revision: 0
+tags: 
+title: $:/plugins/telarus/rendertable/Widgets/rendertable.js
+type: application/javascript
+
+/*\
+title: $:/plugins/telarus/rendertable/Widgets/rendertable.js
+type: application/javascript
+module-type: widget
+
+Render table widget <$rendertable></$rendertable>.
+The contents are set automatically by the <<RenderTable>> macro.
+It is called automatically by the <<table schema mode datafilter datapath tablestate>> macro.
+
+\*/
+(function(){
+
+/*jslint node: true, browser: true */
+/*global $tw: false */
+"use strict";
+
+var Widget = require("$:/core/modules/widgets/widget.js").widget;
+
+/*
+Initialize and add event listenders
+*/
+var RenderTableWidget = function(parseTreeNode,options) {
+	this.initialise(parseTreeNode,options);
+	this.addEventListeners([
+		{type: "tm-table-filter", handler: "handleTableFilterEvent"},
+		{type: "tm-table-sort", handler: "handleTableSortEvent"}       
+	]);
+};
+
+/*
+Inherit from the base widget class
+*/
+RenderTableWidget.prototype = new Widget();
+
+/*
+Render this widget into the DOM
+*/
+RenderTableWidget.prototype.render = function (parent, nextSibling) {
+    //console.log("Render Table");
+	this.parentDomNode = parent;
+	this.computeAttributes();
+	this.execute();
+	var domNode = this.document.createElement("div");
+	parent.insertBefore(domNode,nextSibling);
+	this.renderChildren(domNode,null);
+	this.domNodes.push(domNode);
+};
+
+/*
+Compute the internal state of the widget
+*/
+RenderTableWidget.prototype.execute = function() {
+	// Get our parameters
+	this.schema = this.getAttribute("schema", this.getVariable("schema"));
+	this.mode = this.getAttribute("mode", this.getVariable("mode"));
+	this.datafilter = this.getAttribute("datafilter", this.getVariable("datafilter"));
+	this.datapath = this.getAttribute("datapath", this.getVariable("datapath"));
+	this.tablestate  = this.getAttribute("tablestate ", this.getVariable("tablestate "));
+
+	var TableString = "";
+	if( !this.schema) TableString = "(!) Error: No table schema provided.";
+	if( !this.mode) this.mode = "tiddler";
+	if( !this.datafilter) this.datafilter = this.schema;
+	if( this.schema == this.datafilter && !this.datapath) this.datapath = "table_data";
+
+	TableString += "<$vars schema=\""+this.schema+"\" mode=\""+this.mode+"\" datafilter=\""+this.datafilter+"\" datapath=\""+this.datapath+"\">"
+	if( !this.tablestate ) TableString += "<$wikify name=\"tablestate\" text=<<TableState>>>";
+	if( this.tablestate ) TableString += "<$set name=\"tablestate\" value=\""+this.tablestate+"\" >";
+	TableString += "<<RenderTable>>";
+	if( !this.tablestate ) TableString += "</$wikify>";
+	if( this.tablestate ) TableString += "</$set>";
+	TableString += "</$vars>";
+
+	// Construct the child widgets: this.makeChildWidgets();
+	//This is the part that actually displays the bar in the wiki
+	var parser = this.wiki.parseText("text/vnd.tiddlywiki",TableString,{parseAsInline: false});
+	var parseTreeNodes = parser ? parser.tree : [];
+	this.makeChildWidgets(parseTreeNodes);
+};
+
+/*
+Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
+*/
+RenderTableWidget.prototype.refresh = function(changedTiddlers) {
+	var changedAttributes = this.computeAttributes();
+	if(changedAttributes.tiddler) {
+		this.refreshSelf();
+		return true;
+	} else {
+		return this.refreshChildren(changedTiddlers);		
+	}
+};
+
+/* Event Functions */
+RenderTableWidget.prototype.handleTableFilterEvent= function(event) {
+    this.tablestate = event.paramObject.tablestate;
+	var regex, result, renderedentities, rowentities;
+	var tiddler = this.wiki.getTiddler(this.tablestate);
+	var filterinput = tiddler.fields["filter-input"];
+	var filterinsensitive = tiddler.fields["filter-insensitive"];
+	var filterinvert = tiddler.fields["filter-invert"];
+	var flags = "m";
+	flags += (filterinsensitive)?"i":"";
+	//handle invalid regex and alert the user
+	try {
+		regex = new RegExp(filterinput, flags);
+	}
+	catch(e) {
+		var errorstring = e.toString();
+		errorstring = errorstring.replace(/:/g, "\n")
+		alert(errorstring);
+		var modification = this.wiki.getModificationFields();
+		modification["filter-applied"] = "";
+		this.wiki.addTiddler(new $tw.Tiddler(tiddler,modification));
+		return true;
+	}
+	
+	var columns = this.wiki.filterTiddlers("[["+this.schema+"]indexes[]removeprefix[fields]removesuffix[.@name]nsort[]]");	
+	var primarykey = $tw.wiki.getTextReference(this.schema+"##table.@primarykey", "", this.schema);
+    var modeRowList = "<$vars schema=\""+this.schema+"\" mode=\""+this.mode+"\" datafilter=\""+this.datafilter+"\" datapath=\""+this.datapath+"\" tablestate=\""+this.tablestate+"\" primarykey=\""+primarykey+"\"><<"+this.mode+"RowList>></$vars>";
+	
+	renderedentities = [];	
+	rowentities = this.wikifyText(modeRowList).trim().split(" ");	
+	for (var t in rowentities){
+		var col, colname, template, text;
+		var newItem = {};
+		newItem.name = rowentities[t];
+		newItem.value = "";
+		for (var c in columns) {
+			//Start loop through columns here
+			col = columns[c];
+			colname = $tw.wiki.getTextReference(this.schema+"##fields"+col+".@name", "", this.schema);
+			template = $tw.wiki.getTextReference(this.schema+"##fields"+col+".template", "", this.schema);
+			
+			text = "<$vars schema=\""+this.schema+"\" mode=\""+this.mode+"\" datafilter=\""+this.datafilter+"\" datapath=\""+this.datapath+"\" tablestate=\""+this.tablestate+"\" primarykey=\""+primarykey+"\" col=\""+col+"\" template=\""+template+"\" rowlist=\""+rowentities+"\" rowentity=\""+decodeURIComponent(rowentities[t])+"\"><$set name=\"rowtiddler\" filter=<<"+this.mode+"RowTiddler>> ><$set name=\"rowpath\" filter=<<"+this.mode+"RowPath>> ><$set name=\"fieldname\" filter=<<FieldName>> >";
+			if (!template){
+				text += "<<defaultCell>>";
+			}
+			else {				
+				text += "<$importvariables filter=\"[<template>]\"><<CellTemplate>></$importvariables>";
+			}
+			text += "</$set></$set></$set></$vars>";		
+			newItem.value += this.wikifyText(text);	
+			if (col != columns[columns.length - 1]) newItem.value += "\n";		
+			//End loop through columns here
+		}	
+		renderedentities.push(newItem);
+	}
+
+	//Build final list by checking each renderedentity against the regex filter
+	result = "";
+	for (var i=0; i<renderedentities.length; i++) {
+		console.log(renderedentities[i].name+":"+renderedentities[i].value);
+		if(!filterinvert) {
+			if(regex.test(renderedentities[i].value)){
+				console.log("match");
+				result += renderedentities[i].name;
+				if (i<renderedentities.length-1) result += " ";
+			}
+		}
+		else {
+			if(!regex.test(renderedentities[i].value)){
+				console.log("match");
+				result += renderedentities[i].name;
+				if (i<renderedentities.length-1) result += " ";
+			}			
+		}
+	}
+	
+    /*Store Sorted RowEntity List*/
+    console.log("Result: "+result);
+    var modification = this.wiki.getModificationFields();
+    modification["filter-list"] = result;
+    this.wiki.addTiddler(new $tw.Tiddler(tiddler,modification));
+    return true;
+};
+
+RenderTableWidget.prototype.handleTableSortEvent= function(event) {
+    this.tablestate = event.paramObject.tablestate;
+	var col = event.paramObject.col;
+	var result, sortentities, rowentities;
+	var tiddler = this.wiki.getTiddler(this.tablestate);
+    var sortby = tiddler.fields["sort-by"];
+    var sortorder = tiddler.fields["sort-order"];
+    //console.log("Render Table - Sort Event - "+sortby+" - "+sortorder);
+	
+	var primarykey = $tw.wiki.getTextReference(this.schema+"##table.@primarykey", "", this.schema);
+    var modeRowList = "<$vars schema=\""+this.schema+"\" mode=\""+this.mode+"\" datafilter=\""+this.datafilter+"\" datapath=\""+this.datapath+"\" tablestate=\""+this.tablestate+"\" primarykey=\""+primarykey+"\"><<"+this.mode+"RowList>></$vars>";
+	
+	sortentities = [];	
+	rowentities = this.wikifyText(modeRowList).trim().split(" ");	
+	for (var t in rowentities){
+		var template, text;
+		var newItem = {};
+		newItem.name = rowentities[t];
+		
+		template = $tw.wiki.getTextReference(this.schema+"##fields"+col+".template", "", this.schema);
+		
+		text = "<$vars schema=\""+this.schema+"\" mode=\""+this.mode+"\" datafilter=\""+this.datafilter+"\" datapath=\""+this.datapath+"\" tablestate=\""+this.tablestate+"\" primarykey=\""+primarykey+"\" col=\""+col+"\" template=\""+template+"\" rowlist=\""+rowentities+"\" rowentity=\""+decodeURIComponent(rowentities[t])+"\"><$set name=\"rowtiddler\" filter=<<"+this.mode+"RowTiddler>> ><$set name=\"rowpath\" filter=<<"+this.mode+"RowPath>> ><$set name=\"fieldname\" filter=<<FieldName>> >";
+		if (!template){
+			text += "<<defaultCell>>";
+		}
+		else {				
+			text += "<$importvariables filter=\"[<template>]\"><<CellTemplate>></$importvariables>";
+		}
+		text += "</$set></$set></$set></$vars>";		
+		newItem.value = this.wikifyText(text);
+		sortentities.push(newItem);
+	}
+
+	//Do sort()
+	var reverseBool = (sortorder == "desc") ? true : false;
+	sortentities.sort(this.sort_by("value", reverseBool, ""));	
+	
+	result = "";
+	for (var i=0; i<sortentities.length; i++) {
+		//console.log(sortentities[i].name+":"+sortentities[i].value);
+		result += sortentities[i].name;
+		if (i<sortentities.length-1) result += " ";
+	}
+	
+    /*Store Sorted RowEntity List*/
+    //console.log("Result: "+reverseBool.toString()+" "+result);
+    var modification = this.wiki.getModificationFields();
+    modification["sort-list"] = result;
+    this.wiki.addTiddler(new $tw.Tiddler(tiddler,modification));
+    return true;
+};
+
+/*Helper Functions*/
+RenderTableWidget.prototype.wikifyText = function (text) {
+	// Create the parse tree
+	this.wikifyParser = this.wiki.parseText("text",text,{
+			parseAsInline: this.wikifyMode === "inline"
+		});
+	// Create the widget tree 
+	this.wikifyWidgetNode = this.wiki.makeWidget(this.wikifyParser,{
+			document: $tw.fakeDocument,
+			parentWidget: this
+		});
+	// Render the widget tree to the container
+	this.wikifyContainer = $tw.fakeDocument.createElement("div");
+	this.wikifyWidgetNode.render(this.wikifyContainer,null);
+	
+	//console.log("WikifyResult: "+ this.wikifyContainer.textContent);
+	this.wikifyResult = this.wikifyContainer.textContent;
+    return this.wikifyResult;
+};
+
+RenderTableWidget.prototype.sort_by = function(field, reverse, primer){
+   var key = function (x) {return primer ? primer(x[field]) : x[field]};
+   return function (a,b) {
+	   //parallel implementation to "+[nsortcs[]]"
+		var A = key(a), B = key(b);
+		var x,y,
+			compareNumbers = function(x,y) {
+				var result = 
+					isNaN(x) && !isNaN(y) ? (reverse ? -1 : 1) :
+					!isNaN(x) && isNaN(y) ? (reverse ? 1 : -1) :
+											(reverse ? y - x :  x - y);
+				return result;
+			};
+		x = Number(A);
+		y = Number(B);
+		if((!isNaN(x) || !isNaN(y))) {
+			return compareNumbers(x,y);
+		} else if($tw.utils.isDate(A) && $tw.utils.isDate(B)) {
+			return reverse ? B - A : A - B;
+		} else {
+			A = String(A);
+			B = String(B);
+			return reverse ? B.localeCompare(A) : A.localeCompare(B);
+		}
+	}
+};
+
+exports.rendertable = RenderTableWidget;
+
+})();
+

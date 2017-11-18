@@ -1,0 +1,14 @@
+created: 20171027053607861
+modified: 20171104000430626
+tags: $:/tags/Stylesheet
+title: Examples/Stylesheets/Table_schema
+type: text/vnd.tiddlywiki
+
+.test-caption {
+    width: 25em;
+    text-decoration: underline;
+}
+.test-caption button {
+    display: inline-block;
+    text-decoration: underline;
+}

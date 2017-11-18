@@ -1,0 +1,114 @@
+created: 20170925054623838
+modified: 20171115224752141
+revision: 0
+tags: $:/tags/Stylesheet
+title: $:/plugins/telarus/rendertable/Stylesheets/Table
+type: text/vnd.tiddlywiki
+
+.tablewrapper {
+white-space: nowrap; 
+display: inline;
+}
+
+.caption{
+float: left;
+padding-right: 0.4em; 
+vertical-align: middle; 
+}
+
+.tablecontrols, .sortable {
+display: inline-block;
+margin: 0em 0.2em;
+vertical-align: bottom; 
+}
+
+.scrollable {
+display: block; 
+overflow-x: auto; 
+height: 100%; 
+width: 100%; 
+clear: left;
+}
+
+table {
+overflow-y: auto; 
+margin-top: 0em; 
+margin-bottom: 0em;
+}
+
+table td { 
+  vertical-align: top; 
+}
+
+table th, .header, .caption {
+background-color: <<color table-header-background>>;
+font-weight: bold;
+text-align: left;
+}
+
+.caption {white-space: normal;}
+
+.filter-float{
+    float: left;
+    display: inline-block;
+    margin: 0.2em;
+    vertical-align: middle; 
+}
+
+.filter-control {
+    display: inline-block;
+    margin: 0.2em;
+    vertical-align: middle;
+}
+
+.filter-control button, .filter-control a{
+    display: inline-block;
+    width: auto;
+    vertical-align: middle; 
+    padding: 0em;
+}
+
+.filter-control button span, .filter-control button span i, .filter-flag, .filter-flag span, .filter-flag input {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.tablecontrols .tc-drop-down{
+    font-weight: normal;
+    width: 32em;
+}
+
+.tablecontrols .tc-drop-down ul {
+    display: inline-block;
+    margin: 0em 0.2em;
+    white-space: normal;
+}
+
+.caption .tc-drop-down a, .caption .tc-drop-down button {
+    display: inline-block;
+    width: auto;
+}
+
+.filter-flag input {
+    margin: 0em 0.2em;
+}
+
+.fa-dim {
+color: <<color sidebar-controls-foreground>>;
+}
+
+.fa-dim:hover {
+color: <<color sidebar-controls-foreground-hover>>;
+}
+
+.fa-focus {
+color: <<color sidebar-controls-foreground-hover>>;
+}
+
+.fa-defocus {
+color: <<color sidebar-controls-foreground>>;
+}
+
+.header-popup, .footer-popup {
+    padding: 0.5em;
+}

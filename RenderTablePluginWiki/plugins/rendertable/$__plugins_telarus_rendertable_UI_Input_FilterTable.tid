@@ -1,0 +1,42 @@
+created: 20171007221618056
+filter-insensitive: 
+modified: 20171107035013453
+revision: 0
+tags: 
+title: $:/plugins/telarus/rendertable/UI/Input/FilterTable
+type: text/vnd.tiddlywiki
+
+<div class="filter-float">
+<$list filter="[<tablestate>has[filter-applied]]" variable="">
+<<fa-icon "filter" "fa-3x fa-focus">>
+</$list>
+<$list filter="[<tablestate>!has[filter-applied]]" variable="">
+<<fa-icon "filter" "fa-3x fa-defocus">>
+</$list>
+</div>
+<div class="filter-control">
+<$button class="tc-btn-invisible" tooltip="Apply filter" actions=<<Filter-Apply>> >
+<<fa-icon "check-square" "fa-lg fa-dim">>
+</$button>
+<$button class="tc-btn-invisible" tooltip="Clear filter" actions=<<Filter-Clear>> >
+<<fa-icon "window-close" "fa-lg fa-dim">>
+</$button>
+<$edit-text tiddler=<<tablestate>> field="filter-input" type="search" tag="input" default="" class="filter-input" style="margin: 2px;"/>
+<$button class="tc-btn-invisible" tooltip="Reset input to last applied filter" actions=<<Filter-Reset>> >
+<<fa-icon "undo" "fa-lg fa-fw fa-dim">>
+</$button>
+</div>
+<br/>
+<div class="filter-control">
+<$checkbox tiddler=<<tablestate>> field="filter-insensitive" checked="true" unchecked="" default="" class="filter-flag"> Case Insensitive?</$checkbox>
+<br/>
+<$checkbox tiddler=<<tablestate>> field="filter-invert" checked="true" unchecked="" default="" class="filter-flag"> Invert? (Hides Matches)</$checkbox>
+</div>
+<br/>
+<div class="filter-control">
+<ul>
+<li>See <a href="https://regexr.com/" rel="noopener noreferrer" target="_blank">Regexr.com</a> for a comprehensive Regex quick reference.</li>
+<li>Rows are wikified into an array of cell content separated by the newline symbol (\n). All filtering uses the multiline flag when determining matches.</li>
+<li>Wikification is done at the time the filter is applied & will not auto update with changes to the wiki's tiddlers. Re-apply the filter to view up-to-date data.</li>
+</ul>
+</div>

@@ -1,0 +1,23 @@
+created: 20171112191257908
+modified: 20171118035240063
+tags: 
+title: Examples/Template/Table-Edit/value
+type: text/vnd.tiddlywiki
+
+\define ViewTemplate()
+<$set name="currentField" filter="[{$(rowtiddler)$##$(rowpath)$field}]">
+<$view tiddler=<<currentTiddler>> field=<<currentField>> />
+</$set>
+\end
+
+\define EditTemplate()
+<$set name="currentField" filter="[{$(rowtiddler)$##$(rowpath)$field}]">
+<$edit tiddler=<<currentTiddler>> field=<<currentField>> />
+</$set>
+\end
+
+\define CellTemplate()
+<$list filter="[<currentTiddler>has[draft.of]]" variable="" emptyMessage=<<ViewTemplate>> >
+<<EditTemplate>>
+</$list>
+\end

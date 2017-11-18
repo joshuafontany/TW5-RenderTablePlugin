@@ -1,0 +1,7 @@
+created: 20171117223944635
+modified: 20171117230139452
+tags: 
+title: GM Header Test
+type: text/vnd.tiddlywiki
+
+<<table schema:"Table/CampaignTiddler/Header/Gamemaster_schema.json" mode:"array" datafilter:"[[Table/CampaignTiddler/Header/Gamemaster_schema.json]]" datapath:"table_data">>

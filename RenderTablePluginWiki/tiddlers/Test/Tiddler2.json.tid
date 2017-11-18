@@ -1,0 +1,12 @@
+created: 20171006060129526
+flat: true
+modified: 20171006060238497
+tags: 
+title: Test/Tiddler2.json
+type: application/json
+
+{
+    "key2": "test 4",
+    "key3": "test 10",
+    "text": ""
+}

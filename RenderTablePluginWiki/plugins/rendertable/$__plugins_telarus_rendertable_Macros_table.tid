@@ -1,0 +1,12 @@
+created: 20171016201318094
+modified: 20171115214550356
+revision: 0
+tags: $:/tags/Macro
+title: $:/plugins/telarus/rendertable/Macros/table
+type: text/vnd.tiddlywiki
+
+\define table(schema mode datafilter datapath tablestate)
+<$rendertable schema="$schema$" mode="$mode$" datafilter="$datafilter$" datapath="$datapath$" tablestate="$tablestate$" />
+\end
+
+<pre><$view field="text"/></pre>

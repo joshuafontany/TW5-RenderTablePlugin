@@ -1,0 +1,27 @@
+created: 20170925214048122
+flat: true
+modified: 20171115212356607
+tags: 
+title: Table/DB_schema.json
+type: application/json
+
+{
+    "fields[0].@name": "_id.oid",
+    "fields[0].caption": "ID#",
+    "fields[0].class": "header",
+    "fields[0].header-style": "text-decoration:underline;",
+    "fields[1].@name": "product_name",
+    "fields[1].caption": "Product Name",
+    "fields[2].@name": "supplier",
+    "fields[2].caption": "Supplier",
+    "fields[3].@name": "quantity",
+    "fields[3].caption": "Quantity",
+    "fields[4].@name": "unit_cost",
+    "fields[4].caption": "Unit Cost",
+    "table.@primarykey": "_id.oid",
+    "table.caption": "My DB Table",
+    "table.caption-style": "font-style: italic;",
+    "table.class": "db-table",
+    "table.headers": "true",
+    "table.style": "width: auto;"
+}

@@ -1,0 +1,30 @@
+created: 20171010000628542
+modified: 20171117192133335
+revision: 0
+tags: $:/tags/Macro
+title: $:/plugins/telarus/rendertable/Macros/Cells
+type: text/vnd.tiddlywiki
+
+\define defaultCell()
+<$list filter="[<rowtiddler>get[type]!regexp[application\/json]!regexp[application\/x-tiddler-dictionary]]" variable="" emptyMessage=<<dataCell>> >
+<$transclude tiddler=<<rowtiddler>> field=<<fieldname>> />
+</$list>
+\end
+
+\define dataCell()
+<$list filter="[<fieldname>!regexp[^title$]]" variable="" emptyMessage="""<$transclude tiddler=<<rowtiddler>> field=<<fieldname>> />""" >
+<$transclude tiddler=<<rowtiddler>> index=<<fieldname>> />
+</$list>
+\end
+
+\define RenderCell()
+<td class={{$(schema)$##fields$(col)$.field-class}} style={{$(schema)$##fields$(col)$.field-style}} >
+<$list filter="[{$(schema)$##fields$(col)$.template}!regexp[^$]]" variable="template" emptyMessage=<<defaultCell>> >
+<$importvariables filter="[<template>]">
+<<CellTemplate>>
+</$importvariables>
+</$list>
+</td>
+\end
+
+<pre><$view field="text"/></pre>

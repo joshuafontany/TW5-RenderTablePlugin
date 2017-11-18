@@ -1,0 +1,22 @@
+created: 20171014211722198
+modified: 20171014225115874
+revision: 0
+tags: 
+title: $:/plugins/telarus/rendertable/UI/Button/ClearFilter
+type: text/vnd.tiddlywiki
+
+\define Filter-Reset()
+<$action-deletefield $tiddler="$(tablestate)$" $field="filter"/>
+<$action-deletefield $tiddler="$(tablestate)$" $field="filtered.rowtiddlers"/>
+<$action-deletefield $tiddler="$(tablestate)$" $field="filtered.rowindexes"/>
+\end
+
+\define Filter-State()
+[[$(tablestate)$]get[filter]limit[1]]
+\end
+
+<$list filter=<<Filter-State>> variable="show">
+<$button class="tc-btn-invisible" tooltip="Reset this filter" actions=<<Filter-Reset>> >
+<<fa-icon "ban" "fa-dim">>
+</$button>
+</$list>

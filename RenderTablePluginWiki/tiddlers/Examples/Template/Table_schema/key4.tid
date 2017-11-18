@@ -1,0 +1,19 @@
+created: 20171023221905328
+modified: 20171118212542224
+tags: 
+title: Examples/Template/Table_schema/key4
+type: text/vnd.tiddlywiki
+
+\define DefaultCell()
+<$transclude tiddler=<<rowtiddler>> field="$(rowpath)$key2"  /> (key2 value)
+\end
+
+\define DataCell()
+<$transclude tiddler=<<rowtiddler>> index="$(rowpath)$key2"  /> (key2 value)
+\end
+
+\define CellTemplate()
+<$list filter="[<rowtiddler>get[type]!regexp[application/json]!regexp[application/x-tiddler-dictionary]]" variable="" emptyMessage=<<DataCell>> >
+<<DefaultCell>>
+</$list>
+\end

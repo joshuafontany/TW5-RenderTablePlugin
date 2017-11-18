@@ -1,0 +1,14 @@
+created: 20171118035426961
+modified: 20171118213031439
+title: CellTemplate Tiddler
+type: text/vnd.tiddlywiki
+
+A tiddler which defines a ``CellTemplate`` macro and is listed as a field template in a table schema is used to render each cell in that field's column. The following pattern is used to automatically detect if the data cell is being pulled from a regular tiddler or a data tiddler (type == application.json or type == application/x-tiddler-dictionary).
+
+[[Examples/Template/Table_schema/key4]]:
+<$codeblock code={{Examples/Template/Table_schema/key4}} />
+
+For an advanced example, the [[Examples/Template/Table-Edit/value]] tiddler changes the behavior of the second column in the [[Examples/Table-Edit]] tables depending on if the table is being rendered in a ViewTemplate or an EditTemplate:
+
+[[Examples/Template/Table-Edit/value]]:
+<$codeblock code={{Examples/Template/Table-Edit/value}} />

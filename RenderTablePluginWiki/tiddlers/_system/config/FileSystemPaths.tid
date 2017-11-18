@@ -1,0 +1,10 @@
+created: 20170830235723553
+creator: 10.0.0.12
+modified: 20170907051346112
+modifier: 10.0.0.12
+tags: 
+title: $:/config/FileSystemPaths
+type: text/vnd.tiddlywiki
+
+[is[system]removeprefix[$:/]addprefix[_system/]]
+[!has[draft.of]]

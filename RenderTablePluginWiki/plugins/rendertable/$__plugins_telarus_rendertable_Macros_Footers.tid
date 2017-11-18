@@ -1,0 +1,61 @@
+created: 20171007075746845
+modified: 20171115224630499
+revision: 0
+tags: $:/tags/Macro
+title: $:/plugins/telarus/rendertable/Macros/Footers
+type: text/vnd.tiddlywiki
+
+\define TFStyle() position:relative; {{$(schema)$##fields$(col)$.footer-style}}
+
+\define TFooter()
+<th class={{$(schema)$##fields$(col)$.header-class}} style=<<TFStyle>> class={{$(schema)$##fields$(col)$.footer-class}}>
+<$list filter="[[$(schema)$]getindex[fields$(col)$.description]]" variable="" emptyMessage="""{{$(schema)$##fields$(col)$.caption}}""">
+<$wikify name="footerpopup" text={{{ [<col>encodeuri[]addprefix[$(tablestate)$-footerpopup]] }}} >
+<$button class="tc-btn-invisible"  popup=<<footerpopup>> >
+ {{$(schema)$##fields$(col)$.caption}}
+</$button>
+<$reveal type="popup" position="above" state=<<footerpopup>> tag="div" class="tc-drop-down footer-popup">
+
+;<$transclude tiddler="$(schema)$" index="fields$(col)$.caption" /> (<$transclude tiddler="$(schema)$" index="fields$(col)$.@name" />)
+:<$transclude tiddler="$(schema)$" index="fields$(col)$.description" />
+</$reveal>
+</$wikify>
+</$list>
+<$list filter="[[$(schema)$]getindex[table.sortable]]" variable="" >
+<div class="sortable">
+<$transclude tiddler="$:/plugins/telarus/rendertable/UI/Button/Sort" />
+</div>
+</$list>
+</th>
+\end
+
+\define AddFooterCells()
+<th colspan={{$(schema)$##footers$(frow)$$(fcell)$.colspan}} rowspan={{$(schema)$##footers$(frow)$$(fcell)$.rowspan}} class={{$(schema)$##fields$(col)$.footer-class}} style={{$(schema)$##fields$(col)$.footer-style}}>
+<$transclude tiddler={{$(schema)$##footers$(frow)$$(fcell)$.template}} mode="block"/>
+</th>
+\end
+
+
+\define TableFooters()
+<tfoot>
+<!-- Auto footers -->
+<$list filter="[[$(schema)$]getindex[table.headers]!regexp[false]]" variable="">
+<tr>
+<$list filter=<<TableHeaderFilter>> variable="col">
+<<TFooter>>
+</$list>
+</tr>
+</$list>
+<!-- Additional Footers -->
+<$set name="zeroindex" value="col[0]">
+<$list filter="[[$(schema)$]indexes[]removeprefix[footers]removesuffix[.template]removesuffix<zeroindex>sort[]]" variable="frow">
+<tr>
+<$list filter="[[$(schema)$]indexes[]removeprefix[footers]removeprefix<frow>removesuffix[.template]sort[]]" variable="fcell" >
+<<AddFooterCells>>
+</$list>
+</tr>
+</$list>
+</$set>
+</tfoot>
+\end
+<pre><$view field="text"/></pre>

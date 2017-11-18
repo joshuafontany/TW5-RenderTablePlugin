@@ -1,0 +1,41 @@
+created: 20171111014235525
+data-_0_: testing
+data-_1_: test
+data-_2_: THIS IS INTERESTING
+data-_3_: 555555
+data-_4_: 123123123
+modified: 20171118030456966
+tags: EditTableTest
+title: Examples/Table-Edit
+type: text/vnd.tiddlywiki
+
+<hr/>
+
+Edit this tiddler to see the examples function. While editing, preview the text field (closed/open eye button) to switch a table with this setup to "edit" mode while it is in the text field being edited:
+
+<$macrocall $name="table" schema="Examples/Table-Edit_schema.json" mode="array" datafilter="[[Examples/Table-Edit_data.json]]"/>
+
+<hr/>
+
+This tiddler is tagged: <<tag EditTableTest>>
+
+This causes a template defines in [[Examples/Template]] to be inserted into the tiddler's layout above the ``text`` field. The positioning is set in the ``list`` field of the [[$:/tags/ViewTemplate]] and [[$:/tags/ViewTemplate]] tiddlers.
+
+This is the macrocall that renders the table, found in [[Examples/Template]]:
+
+``<$macrocall $name="table" schema="Examples/Table-Edit_schema.json" mode="array" datafilter="[[Examples/Table-Edit_data.json]]"/>``
+
+The macro renders a table based on the [[Examples/Table-Edit_schema.json]] schema tiddler, which defines a template for each column. The data for the table, found in [[Examples/Table-Edit_data.json]], defines an array of field names. Each template uses this field name to reference a field on the ``<<currentTiddler>>``. The ``<<CellTemplate>>`` macro for the second column, found in [[Examples/Template/Table-Edit/value]], changes the rendering behavior when the ``<<currentTiddler>>`` has the ``draft.of`` field (i.e. a tiddler is being displayed in edit mode).
+
+<hr/>
+See also:
+
+[[$:/tags/ViewTemplate]]
+
+[[$:/tags/EditTemplate]]
+
+[[Examples/Template]]
+
+[[Examples/Template/Table-Edit/field]]
+
+[[Examples/Template/Table-Edit/value]]

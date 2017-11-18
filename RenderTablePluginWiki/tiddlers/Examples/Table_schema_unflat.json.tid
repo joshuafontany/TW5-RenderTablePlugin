@@ -1,0 +1,122 @@
+created: 20171006044347570
+flat: false
+modified: 20171115212228585
+tags: 
+title: Examples/Table_schema_unflat.json
+type: application/json
+
+{
+    "fields": [
+        {
+            "@name": "title",
+            "caption": "Primary Key",
+            "description": "The table's primary key column.",
+            "field-class": "header",
+            "field-style": "",
+            "footer-class": "",
+            "footer-style": "",
+            "header-class": "",
+            "header-style": "",
+            "template": ""
+        },
+        {
+            "@name": "key2",
+            "caption": "2nd Key",
+            "description": "The table's 2nd column.",
+            "field-class": "",
+            "field-style": "",
+            "footer-class": "",
+            "footer-style": "",
+            "header-class": "",
+            "header-style": "",
+            "template": ""
+        },
+        {
+            "@name": "key3",
+            "caption": "3rd Key",
+            "description": "The table's 3rd column.",
+            "field-class": "",
+            "field-style": "",
+            "footer-class": "",
+            "footer-style": "",
+            "header-class": "",
+            "header-style": "",
+            "template": ""
+        },
+        {
+            "@name": "key4",
+            "caption": "Template Column",
+            "description": "The table's 4th column - rendered via a view template.",
+            "field-class": "",
+            "field-style": "",
+            "footer-class": "",
+            "footer-style": "",
+            "header-class": "",
+            "header-style": "",
+            "template": "Examples/Table_schema/View/key4/$(mode)$"
+        }
+    ],
+    "footers": [
+        {
+            "col": [
+                {
+                    "colspan": "",
+                    "rowspan": "",
+                    "template": "Examples/Footers/NotationTest"
+                },
+                {
+                    "colspan": "",
+                    "rowspan": "",
+                    "template": "Examples/Footers/NotationTest"
+                },
+                {
+                    "colspan": "",
+                    "rowspan": "2",
+                    "template": "Examples/Footers/NotationTest"
+                },
+                {
+                    "colspan": "",
+                    "rowspan": "2",
+                    "template": "Examples/Footers/NotationTest"
+                }
+            ]
+        },
+        {
+            "col": [
+                {
+                    "colspan": "2",
+                    "rowspan": "",
+                    "template": "Examples/Footers/NotationTest"
+                }
+            ]
+        }
+    ],
+    "headers": [
+        {
+            "col": [
+                {
+                    "colspan": "4",
+                    "rowspan": "",
+                    "template": "Examples/HeaderTest"
+                }
+            ]
+        }
+    ],
+    "table": {
+        "@primarykey": "title",
+        "caption": "A Caption",
+        "caption-class": "test-caption",
+        "caption-style": "",
+        "class": "",
+        "description": "<$transclude tiddler=\"Examples/DescriptionTest\" />",
+        "filterable": "true",
+        "footers": "true",
+        "footers-class": "header",
+        "footers-style": "",
+        "headers": "true",
+        "headers-class": "",
+        "headers-style": "",
+        "sortable": "true",
+        "style": ""
+    }
+}

@@ -1,0 +1,60 @@
+created: 20171115213011514
+modified: 20171118212143682
+title: Table Schemas
+type: text/vnd.tiddlywiki
+
+Table Schemas are a model of a "HTML +Wikitext Table", which are defined in JSON Tiddlers according to a specific pattern of Key:Value pairs.
+
+The Render Table Widget (usually called by the ``<<table>>`` macro) accepts a "schema" attribute, and uses the provided schema to render the table. Schemas can define CSS classes and styles for various elements, hide or reveal certain parts of the table, add fully customizable headers and footers, and set template tiddlers to render table cells through.
+
+<hr>
+''A Schema must be a "flat" (one layer deep) Json object with the following properties:''
+<ul>
+<li> An array of ``fields[\n+].@name`` properties.</li>
+<li>A ``table.@primarykey`` property, which defines the primary key (unique) of the table.</li>
+</ul>
+
+All properties of the ''fields'' array besides ``@name`` are optional, and begin with the "root path" for each field ``fields[\n+].`` plus the field name:
+<ul>
+<li>``caption`` - Optional text to display instead of the field's ``@name`` in the automatically generated header or footer cells.</li>
+<li>``description`` - Displayed in a popup shown by clicking on the field's caption (header or footer).</li>
+<li>``field-class`` - An optional CSS class to assign to cells in this column.</li>
+<li>``field-style`` - An optional CSS style to assign to cells in this column.</li>
+<li>``footer-class`` - An optional CSS class to assign to the footer cell in this column.</li>
+<li>``footer-style`` - An optional CSS style to assign to the footer cell in this column.</li>
+<li>``header-class`` - An optional CSS class to assign to the header cell in this column.</li>
+<li>``header-style`` - An optional CSS style to assign to the header cell in this column.</li>
+<li>``template`` - The name of a [[CellTemplate Tiddler]] to use to render the data cells in this column.</li>
+</ul>
+
+All properties of the ''table object'' besides ``@primarykey`` are optional. All properties begin with the "root path" for the table object``table.`` plus the field name:
+<ul>
+<li>``caption`` - Text displayed above the table.</li>
+<li>``caption-class`` - An optional CSS class to assign to the caption.</li>
+<li>``caption-style`` - An optional CSS style to assign to the caption.</li>
+<li>``class`` - An optional CSS class to assign to the table element.</li>
+<li>``description`` - Displayed in a popup shown by clicking on the table's caption.</li>
+<li>``filterable`` - Set to ''true'' to mark the table as filterable.</li>
+<li>``footers`` - Blank = ''false'' (default). Set to ''true'' to render an auto-footer for each column.</li>
+<li>``footers-class`` - An optional CSS class to assign to the footer cells.</li>
+<li>``footers-style`` - An optional CSS style to assign to the footer cells.</li>
+<li>``headers`` - Blank = ''true'' (default). Set to ''false'' to remove the auto-header for each column.</li>
+<li>``headers-class`` - An optional CSS class to assign to the header cells.</li>
+<li>``headers-style`` - An optional CSS style to assign to the header cells.</li>
+<li>``sortable`` - Set to ''true'' to mark the table as sortable.</li>
+<li>``style`` - An optional CSS style to assign to the table element.</li>
+</ul>
+
+The table schema may also have a set of properties defining __optional__ ``headers`` or ``footers``. These are rendered before the automatically generated headers or after the automatically generated footers. Optional headers or footers are defined as nested array properties that define rows and columns, ``header[\n+].col[\n+].``. Wach cell of the array can have 3 properties, ``colspan`` which defines the colspan property of the header tag, ``rowspan`` which does the same for the rowspan property, and ``template`` which is the name of the template tiddler transcluded into that header or footer cell. 
+
+For example, a header cell that spans 4 columns and renders the [[Examples/HeaderTest]] tiddler is defined below. The ``rowspan`` property was left out as it is not needed.
+<pre>
+{
+...
+"headers[0].col[0].colspan": "4",
+"headers[0].col[0].template": "Examples/HeaderTest",
+...
+} </pre>
+
+The Example Schema used in [[Examples/Macros/Table]] is shown below with many of the possible properties defined but left blank. [[Examples/Table_schema.json]]:
+<$transclude tiddler="Examples/Table_schema.json"/>

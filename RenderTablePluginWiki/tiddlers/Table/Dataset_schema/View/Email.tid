@@ -1,0 +1,9 @@
+created: 20170925011930839
+modified: 20171027021232566
+tags: 
+title: Table/Dataset_schema/View/Email
+type: text/vnd.tiddlywiki
+
+\define CellTemplate()
+<a href="mailto:{{$(rowtiddler)$##$(fieldname)$}}">{{$(rowtiddler)$##$(fieldname)$}}</a>
+\end

@@ -1,0 +1,29 @@
+created: 20170921053951384
+creator: Josh F
+modified: 20171102215039691
+modifier: Josh F
+revision: 0
+tags: $:/tags/Macro
+title: $:/plugins/telarus/rendertable/Macros/RenderTable
+type: text/vnd.tiddlywiki
+
+\define QualifyTable() <<qualify $(schema)$>>
+
+\define TableState() $:/table/<<QualifyTable>>/<<mode>>/{{{[<datafilter>encodeuri[]]}}}.{{{[<datapath>encodeuri[]]}}}
+
+\define RenderTable()
+<$set name="primarykey" value={{$(schema)$##table.@primarykey}}>
+<div class="tablewrapper">
+<<TableCaption>>
+<div class="scrollable">
+<table class={{$(schema)$##table.class}} style={{$(schema)$##table.style}} >
+<<TableHeaders>>
+<<TableFooters>>
+<<TableBody>>
+</table>
+</div>
+</div>
+</$set>
+\end
+
+<pre><$view field="text"/></pre>

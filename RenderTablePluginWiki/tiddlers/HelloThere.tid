@@ -1,0 +1,12 @@
+created: 20140901120057909
+modified: 20171118211300988
+title: HelloThere
+type: text/vnd.tiddlywiki
+
+This is an HTML+Wikitext Table Renderer plugin for ~TiddlyWiki (http://tiddlywiki.com) by Joshua Fontany.
+
+It contains a macro ``<<table>>`` which calls a [[RenderTable  Widget|$:/plugins/telarus/rendertable/Widgets/rendertable.js]] that renders an HTML Table based on a "schema tiddler" parameter. The schema tiddler is a JSON tiddler and should follow a specific format. See [[Table Schemas]] for more information.
+
+See [[Examples/Macros/Table]] for examples of calling the plugin with different schemas and datafilters, and using the plugin's Sort and Filter functions. 
+
+See [[Examples/Table-Edit]] for an advanced example using the Render Table widget to render parts of Tiddlywiki's User Interface. 

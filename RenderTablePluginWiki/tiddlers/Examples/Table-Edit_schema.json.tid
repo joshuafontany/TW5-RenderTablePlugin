@@ -1,0 +1,20 @@
+created: 20171112174517253
+flat: true
+modified: 20171115204350981
+tags: 
+title: Examples/Table-Edit_schema.json
+type: application/json
+
+{
+    "fields[0].@name": "field",
+    "fields[0].caption": "Field Name",
+    "fields[0].field-class": "header",
+    "fields[0].template": "Examples/Template/Table-Edit/field",
+    "fields[1].@name": "value",
+    "fields[1].caption": "Field Value",
+    "fields[1].template": "Examples/Template/Table-Edit/value",
+    "table.@primarykey": "field",
+    "table.caption": "An Editable Thing",
+    "table.description": "<$transclude tiddler=\"Examples/DescriptionTest\" />",
+    "table.headers": "false"
+}

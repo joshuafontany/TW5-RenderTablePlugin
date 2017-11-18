@@ -1,0 +1,9 @@
+title: $:/plugins/telarus/rendertable/readme
+
+This is an HTML+Wikitext Table Renderer plugin for ~TiddlyWiki.
+
+https://github.com/joshuafontany/TW5-RenderTablePlugin
+
+See the example Wiki for usage details:
+
+https://joshuafontany.github.io/TW5-RenderTablePlugin/

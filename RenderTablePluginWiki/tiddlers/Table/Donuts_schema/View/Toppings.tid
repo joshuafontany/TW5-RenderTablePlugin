@@ -1,0 +1,13 @@
+created: 20170925214541530
+modified: 20171027021313628
+tags: 
+title: Table/Donuts_schema/View/Toppings
+type: text/vnd.tiddlywiki
+
+\define topping() {{$(rowtiddler)$!!$(fieldname)$$(index)$.type}} ({{$(rowtiddler)$!!$(fieldname)$$(index)$.id}})
+
+\define CellTemplate()
+<$list filter="[fields[$(rowtidder)$]removeprefix[$(fieldname)$]removesuffix[.id]sort[]]" variable="index">
+<li><<topping>></li>
+</$list>
+\end

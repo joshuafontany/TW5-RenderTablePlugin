@@ -1,0 +1,28 @@
+created: 20171014200257888
+filter: 
+modified: 20171104022247023
+revision: 0
+tags: 
+title: $:/plugins/telarus/rendertable/UI/Button/Filter
+type: text/vnd.tiddlywiki
+
+<$set name="popup-state" value="$(tablestate)$-filterpopup">
+<$button class="tc-btn-invisible" tooltip="Filter this table" popup=<<popup-state>> >
+<$list filter="[<tablestate>has[filter-applied]]" variable="">
+<<fa-icon "filter" "fa-lg fa-focus">>
+</$list>
+<$list filter="[<tablestate>!has[filter-applied]]" variable="">
+<<fa-icon "filter" "fa-lg fa-dim">>
+</$list>
+</$button>
+<$reveal type="popup" state=<<popup-state>> class="tc-popup-keep">
+<div class="tc-drop-down">
+<$transclude tiddler="$:/plugins/telarus/rendertable/UI/Input/FilterTable" />
+</div>
+</$reveal>
+</$set>
+<$list filter="[<tablestate>has[filter-applied]]" variable="">
+<$button class="tc-btn-invisible" tooltip="Clear filter" actions=<<Filter-Clear>> >
+<<fa-icon "close" "fa-lg fa-dim">>
+</$button>
+</$list>

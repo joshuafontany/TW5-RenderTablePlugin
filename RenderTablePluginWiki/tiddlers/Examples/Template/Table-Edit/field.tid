@@ -1,0 +1,9 @@
+created: 20171112191310025
+modified: 20171117201620804
+tags: 
+title: Examples/Template/Table-Edit/field
+type: text/vnd.tiddlywiki
+
+\define CellTemplate()
+<$transclude tiddler="$(rowtiddler)$" index="$(fieldname)$" />:
+\end

@@ -1,0 +1,52 @@
+created: 20171018212401920
+flat: false
+modified: 20171018213149118
+tags: 
+title: $:/archive/json/Test/Colors2.json
+type: application/json
+
+{
+    "colors": [
+        {
+            "category": "hue",
+            "code": {
+                "hex": "#00FFFF",
+                "rgba": [
+                    "0",
+                    "255",
+                    "255",
+                    "1"
+                ]
+            },
+            "color": "cyan",
+            "type": "secondary"
+        },
+        {
+            "category": "hue",
+            "code": {
+                "hex": "#FF00FF",
+                "rgba": [
+                    "255",
+                    "0",
+                    "255",
+                    "1"
+                ]
+            },
+            "color": "magenta",
+            "type": "secondary"
+        },
+        {
+            "category": "hue",
+            "code": {
+                "hex": "#FF007F",
+                "rgba": [
+                    "255",
+                    "0",
+                    "127",
+                    "1"
+                ]
+            },
+            "color": "rose",
+            "type": "tertiary"
+        }        
+]}

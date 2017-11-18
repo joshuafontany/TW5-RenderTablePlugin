@@ -1,0 +1,67 @@
+created: 20170925063257877
+donuts-_0_.batters.batter-_0_.id: 5001
+donuts-_0_.batters.batter-_0_.type: Regular
+donuts-_0_.batters.batter-_1_.id: 1002
+donuts-_0_.batters.batter-_1_.type: Chocolate
+donuts-_0_.batters.batter-_2_.id: 1003
+donuts-_0_.batters.batter-_2_.type: Blueberry
+donuts-_0_.batters.batter-_3_.id: 1004
+donuts-_0_.batters.batter-_3_.type: Devil's Food
+donuts-_0_.id: 0001
+donuts-_0_.name: Cake
+donuts-_0_.ppu: 0.55
+donuts-_0_.ppx: 10.55
+donuts-_0_.topping-_0_.id: 5001
+donuts-_0_.topping-_0_.type: None
+donuts-_0_.topping-_1_.id: 5002
+donuts-_0_.topping-_1_.type: Glazed
+donuts-_0_.topping-_2_.id: 5005
+donuts-_0_.topping-_2_.type: Sugar
+donuts-_0_.topping-_3_.id: 5007
+donuts-_0_.topping-_3_.type: Powdered Sugar
+donuts-_0_.topping-_4_.id: 5006
+donuts-_0_.topping-_4_.type: Chocolate with Sprinkles
+donuts-_0_.topping-_5_.id: 5003
+donuts-_0_.topping-_5_.type: Chocolate
+donuts-_0_.topping-_6_.id: 5004
+donuts-_0_.topping-_6_.type: Maple
+donuts-_0_.type: donut
+donuts-_1_.batters.batter-_0_.id: 1001
+donuts-_1_.batters.batter-_0_.type: Regular
+donuts-_1_.id: 0002
+donuts-_1_.name: Raised
+donuts-_1_.ppu: 0.55
+donuts-_1_.topping-_0_.id: 5001
+donuts-_1_.topping-_0_.type: None
+donuts-_1_.topping-_1_.id: 5002
+donuts-_1_.topping-_1_.type: Glazed
+donuts-_1_.topping-_2_.id: 5005
+donuts-_1_.topping-_2_.type: Sugar
+donuts-_1_.topping-_3_.id: 5003
+donuts-_1_.topping-_3_.type: Chocolate
+donuts-_1_.topping-_4_.id: 5004
+donuts-_1_.topping-_4_.type: Maple
+donuts-_1_.type: donut
+donuts-_2_.batters.batter-_0_.id: 1001
+donuts-_2_.batters.batter-_0_.type: Regular
+donuts-_2_.batters.batter-_1_.id: 1002
+donuts-_2_.batters.batter-_1_.type: Chocolate
+donuts-_2_.id: 0003
+donuts-_2_.name: Old Fashioned
+donuts-_2_.ppu: 0.55
+donuts-_2_.topping-_0_.id: 5001
+donuts-_2_.topping-_0_.type: None
+donuts-_2_.topping-_1_.id: 5002
+donuts-_2_.topping-_1_.type: Glazed
+donuts-_2_.topping-_2_.id: 5003
+donuts-_2_.topping-_2_.type: Chocolate
+donuts-_2_.topping-_3_.id: 5004
+donuts-_2_.topping-_3_.type: Maple
+donuts-_2_.type: donut
+modified: 20171010052342363
+test: should be preserved
+test5: should be preserved
+title: Test/Donuts
+type: text/vnd.tiddlywiki
+
+MMMMMMMMMMMMMMMMMMMM

@@ -1,0 +1,23 @@
+-_0_._id.$oid: 5968dd23fc13ae04d9000001
+-_0_._id.oid: 5968dd23fc13ae04d9000001
+-_0_.product_name: sildenafil citrate
+-_0_.quantity: 261
+-_0_.supplier: Wisozk Inc
+-_0_.unit_cost: $10.47
+-_1_._id.$oid: 5968dd23fc13ae04d9000002
+-_1_._id.oid: 5968dd23fc13ae04d9000002
+-_1_.product_name: Mountain Juniperus ashei
+-_1_.quantity: 292
+-_1_.supplier: Keebler-Hilpert
+-_1_.unit_cost: $8.74
+-_2_._id.$oid: 5968dd23fc13ae04d9000003
+-_2_._id.oid: 5968dd23fc13ae04d9000003
+-_2_.product_name: Dextromathorphan HBr
+-_2_.quantity: 211
+-_2_.supplier: Schmitt-Weissnat
+-_2_.unit_cost: $20.53
+created: 20170925213951917
+modified: 20170925222240174
+title: Test/DB
+type: text/vnd.tiddlywiki
+

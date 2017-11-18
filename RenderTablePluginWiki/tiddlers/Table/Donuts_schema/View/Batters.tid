@@ -1,0 +1,13 @@
+created: 20170925062821631
+modified: 20171027021347493
+tags: 
+title: Table/Donuts_schema/View/Batters
+type: text/vnd.tiddlywiki
+
+\define batter() {{$(rowtiddler)$!!$(fieldname)$$(index)$.type}} ({{$(rowtiddler)$!!$(fieldname)$$(index)$.id}})
+
+\define CellTemplate()
+<$list filter="[fields[$(rowtidder)$]removeprefix[$(fieldname)$]removesuffix[.id]sort[]]" variable="index">
+<li><<batter>></li>
+</$list>
+\end

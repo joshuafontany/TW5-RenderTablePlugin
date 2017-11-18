@@ -1,0 +1,48 @@
+created: 20170925061641774
+flat: true
+modified: 20171115212418137
+tags: 
+title: Table/Donuts_schema.json
+type: application/json
+
+{
+    "fields[0].@name": "id",
+    "fields[0].caption": "ID#",
+    "fields[0].description": "The donut recipe's ID#.",
+    "fields[0].field-class": "header",
+    "fields[0].header-style": "text-decoration: underline;",
+    "fields[1].@name": "name",
+    "fields[1].caption": "Name",
+    "fields[1].description": "The donut recipe's name.",
+    "fields[1].field-class": "header",
+    "fields[1].header-style": "text-decoration: underline;",
+    "fields[2].@name": "type",
+    "fields[2].caption": "Type",
+    "fields[2].description": "The donut recipe's type.",
+    "fields[2].header-style": "text-decoration: underline;",
+    "fields[3].@name": "ppu",
+    "fields[3].caption": "PPU",
+    "fields[4].@name": "ppx",
+    "fields[4].caption": "PPX",
+    "fields[5].@name": "batters.batter",
+    "fields[5].caption": "Batters",
+    "fields[5].field-style": "white-space: nowrap;",
+    "fields[5].template": "Table/Donuts_schema/View/Batters",
+    "fields[6].@name": "topping",
+    "fields[6].caption": "Toppings",
+    "fields[6].field-style": "white-space: nowrap;",
+    "fields[6].template": "Table/Donuts_schema/View/Toppings",
+    "style": "width: auto;",
+    "table.@primarykey": "id",
+    "table.caption": "My Donut Table",
+    "table.caption-class": "",
+    "table.class": "donut-table",
+    "table.filterable": "true",
+    "table.footers": "true",
+    "table.footers-class": "header",
+    "table.footers-style": "",
+    "table.headers": "true",
+    "table.headers-class": "",
+    "table.headers-style": "",
+    "table.sortable": "true"
+}

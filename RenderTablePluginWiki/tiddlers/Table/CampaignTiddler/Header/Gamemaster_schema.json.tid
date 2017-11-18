@@ -1,0 +1,21 @@
+created: 20171010021554997
+flat: true
+modified: 20171117225143881
+tags: 
+title: Table/CampaignTiddler/Header/Gamemaster_schema.json
+type: application/json
+
+{
+    "fields[0].@name": "key",
+    "fields[0].field-class": "header",
+    "fields[1].@name": "value",
+    "fields[1].field-class": "header",
+    "table.@primarykey": "key",
+    "table.caption": "GM Header",
+    "table.style": "width: auto;",
+    "table_data[0].key": "Gamemaster",
+    "table_data[0].value": "<$reveal type=\"match\" state=\"!!rpg.player.gamemaster\" text=\"true\"><<fa-icon \"check-square-o\" \"fa-lg\">></$reveal><$reveal type=\"nomatch\" state=\"!!rpg.player.gamemaster\" text=\"true\"><<fa-icon \"square-o\" \"fa-lg\">></$reveal>",
+    "table_data[1].key": "Primary Contact",
+    "table_data[1].value": "<$macrocall $name=\"contact-fa-icon\" input={{!!rpg.player.contact.primary}} /><$view field=\"rpg.player.contact.primary\" />: <$wikify name=\"contactPrimary\" text=\"\"\"<$macrocall $name=\"contact\" input={{!!rpg.player.contact.primary}} />\"\"\" ><$macrocall $name=\"a\" href=<<contactPrimary>> text=<<contactPrimary>> /></$wikify>",
+    "text": ""
+}

@@ -1,0 +1,61 @@
+created: 20171007075601342
+modified: 20171117192756530
+revision: 0
+tags: $:/tags/Macro
+title: $:/plugins/telarus/rendertable/Macros/Headers
+type: text/vnd.tiddlywiki
+
+\define THStyle() position:relative; {{$(schema)$##fields$(col)$.header-style}}
+
+\define AddHeaderCells()
+<th colspan={{$(schema)$##headers$(hrow)$$(hcell)$.colspan}} rowspan={{$(schema)$##headers$(hrow)$$(hcell)$.rowspan}} class={{$(schema)$##fields$(col)$.header-class}} style={{$(schema)$##fields$(col)$.header-style}}>
+<$transclude tiddler={{$(schema)$##headers$(hrow)$$(hcell)$.template}} mode="block"/>
+</th>
+\end
+
+\define THeader()
+<th class={{$(schema)$##fields$(col)$.header-class}} style=<<THStyle>> class={{$(schema)$##fields$(col)$.header-class}}>
+<$list filter="[[$(schema)$]getindex[fields$(col)$.description]]" variable="" emptyMessage="""{{$(schema)$##fields$(col)$.caption}}""">
+<$wikify name="headerpopup" text={{{ [<col>encodeuri[]addprefix[$(tablestate)$-headerpopup]] }}} >
+<$button class="tc-btn-invisible"  style={{$(schema)$##fields$(col)$.header-style}} popup=<<headerpopup>> >
+ {{$(schema)$##fields$(col)$.caption}}
+</$button>
+<$reveal type="popup" state=<<headerpopup>> tag="div" class="tc-drop-down header-popup" >
+
+;<$transclude tiddler="$(schema)$" index="fields$(col)$.caption" /> (<$transclude tiddler="$(schema)$" index="fields$(col)$.@name" />)
+:<$transclude tiddler="$(schema)$" index="fields$(col)$.description" />
+</$reveal>
+</$wikify>
+</$list>
+<$list filter="[[$(schema)$]getindex[table.sortable]]" variable="" >
+<div class="sortable">
+<$transclude tiddler="$:/plugins/telarus/rendertable/UI/Button/Sort" />
+</div>
+</$list>
+</th>
+\end
+
+\define TableHeaders()
+<thead>
+<!-- Additional Headers -->
+<$set name="zeroindex" value="col[0]">
+<$list filter="[[$(schema)$]indexes[]removeprefix[headers]removesuffix[.template]removesuffix<zeroindex>sort[]]" variable="hrow">
+<tr>
+<$list filter="[[$(schema)$]indexes[]removeprefix[headers]removeprefix<hrow>removesuffix[.template]sort[]]" variable="hcell" >
+<<AddHeaderCells>>
+</$list>
+</tr>
+</$list>
+</$set>
+<!-- Auto Headers -->
+<$list filter="[[$(schema)$]getindex[table.headers]!regexp[false]]" variable="">
+<tr>
+<$list filter=<<TableHeaderFilter>> variable="col">
+<<THeader>>
+</$list>
+</tr>
+</$list>
+</thead>
+\end
+
+<pre><$view field="text"/></pre>

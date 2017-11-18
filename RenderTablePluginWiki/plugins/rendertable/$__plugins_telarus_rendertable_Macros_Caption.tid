@@ -1,0 +1,31 @@
+created: 20171017005439032
+modified: 20171115222204431
+revision: 0
+tags: $:/tags/Macro
+title: $:/plugins/telarus/rendertable/Macros/Caption
+type: text/vnd.tiddlywiki
+
+\define TableCaption()
+<$list filter="[{$(schema)$##table.caption}] +[{$(schema)$##table.filterable}] +[limit[1]]" variable="showcaption">
+<div class={{{[{$(schema)$##table.caption-class}addprefix[caption ]]}}} style={{$(schema)$##table.caption-style}} >
+<div class="tablecontrols">
+<$list filter="[[$(schema)$]getindex[table.filterable]]" variable="showfilter">
+<$transclude tiddler="$:/plugins/telarus/rendertable/UI/Button/Filter" />
+</$list>
+</div>
+<$list filter="[[$(schema)$]getindex[table.description]]" variable="showdescription" emptyMessage="""<$transclude tiddler=<<schema>> index="table.caption" />""">
+<$wikify name="captionpopup" text="$(tablestate)$-captionpopup" >
+<$button class="tc-btn-invisible"  style={{$(schema)$##table.caption-style}} popup=<<captionpopup>> >
+ {{$(schema)$##table.caption}}
+</$button>
+<$reveal type="popup" state=<<captionpopup>> tag="div" class="tc-drop-down header-popup" style="padding: 1em;">
+<h2 style="margin: 0.2em 0em;"><$transclude tiddler="$(schema)$" index="table.caption" /></h2>
+<$transclude tiddler="$(schema)$" index="table.description" />
+</$reveal>
+</$wikify>
+</$list>
+</div>
+</$list>
+\end
+
+<pre><$view field="text"/></pre>

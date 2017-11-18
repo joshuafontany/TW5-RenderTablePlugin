@@ -1,0 +1,9 @@
+created: 20171117193635038
+filter-list: Test%2FColors.json!!colors%5B0%5D Test%2FColors.json!!colors%5B1%5D Test%2FColors.json!!colors%5B2%5D Test%2FColors.json!!colors%5B3%5D Test%2FColors.json!!colors%5B4%5D Test%2FColors.json!!colors%5B5%5D Test%2FColors2.json!!colors%5B0%5D Test%2FColors2.json!!colors%5B1%5D Test%2FColors2.json!!colors%5B2%5D
+modified: 20171118214050517
+sort-by: color
+sort-list: Test%2FColors.json!!colors%5B0%5D Test%2FColors.json!!colors%5B3%5D Test%2FColors2.json!!colors%5B0%5D Test%2FColors.json!!colors%5B5%5D Test%2FColors2.json!!colors%5B1%5D Test%2FColors.json!!colors%5B2%5D Test%2FColors2.json!!colors%5B2%5D Test%2FColors.json!!colors%5B1%5D Test%2FColors.json!!colors%5B4%5D
+sort-order: asc
+title: $:/table/Table/Colors_schema.json-385318539/array/Test/Colors.json%20Test/Colors2.json
+type: text/vnd.tiddlywiki
+

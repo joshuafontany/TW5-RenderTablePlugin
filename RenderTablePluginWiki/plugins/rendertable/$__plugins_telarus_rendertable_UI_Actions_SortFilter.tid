@@ -1,0 +1,29 @@
+created: 20171015014400000
+modified: 20171023213729055
+revision: 0
+tags: $:/tags/Macro
+title: $:/plugins/telarus/rendertable/UI/Actions/SortFilter
+type: text/vnd.tiddlywiki
+
+\define Sort-Actions()
+<$action-setfield $tiddler=<<tablestate>> $field="sort-order" $value=<<sortorder>> />
+<$action-setfield $tiddler=<<tablestate>> $field="sort-by" $value={{$(schema)$##fields$(col)$.@name}} />
+<$action-sendmessage $message="tm-table-sort" tablestate=<<tablestate>> col=<<col>> />
+\end
+
+\define Filter-Apply()
+<$action-setfield $tiddler=<<tablestate>> $field="filter-applied" $value={{$(tablestate)$!!filter-input}} />
+<$action-sendmessage $message="tm-table-filter" tablestate=<<tablestate>> />
+\end
+
+\define Filter-Reset()
+<$action-setfield $tiddler=<<tablestate>> $field="filter-input" $value={{$(tablestate)$!!filter-applied}} />
+\end
+
+\define Filter-Clear()
+<$action-deletefield $tiddler="$(tablestate)$" $field="filter-input"/>
+<$action-deletefield $tiddler="$(tablestate)$" $field="filter-applied"/>
+<$action-sendmessage $message="tm-table-filter" tablestate=<<tablestate>> />
+\end
+
+<pre><$view field="text"/></pre>

@@ -1,0 +1,20 @@
+created: 20171007212550924
+modified: 20171104002517978
+tags: 
+title: Examples/DescriptionTest
+type: text/vnd.tiddlywiki
+
+\define ShowConfig()
+<dt>Schema</dt>
+<dd>[[$(schema)$]]</dd>
+<dt>Mode</dt>
+<dd>$(mode)$</dd>
+<dt>Data Filter</dt>
+<dd>$(datafilter)$</dd>
+<dt>Data Path<dt>
+<dd>$(datapath)$</dd>
+<dt>Tablestate</dt>
+<dd>[[$(tablestate)$]]</dd>
+\end
+
+<<ShowConfig>>

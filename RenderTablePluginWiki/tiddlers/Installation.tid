@@ -1,0 +1,11 @@
+created: 20170908233431221
+modified: 20170924020655317
+title: Installation
+type: text/vnd.tiddlywiki
+
+# Open your wiki in a browser
+# Drag these links into your wiki
+#> [[$:/plugins/telarus/fontawesome]]
+#> [[$:/plugins/telarus/jsonmangler]]
+#> [[$:/plugins/telarus/rendertable]]
+# Save and reload your wiki

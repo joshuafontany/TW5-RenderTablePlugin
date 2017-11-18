@@ -1,0 +1,41 @@
+created: 20171008011535138
+modified: 20171117193742133
+revision: 0
+tags: 
+title: $:/plugins/telarus/rendertable/UI/Button/Sort
+type: text/vnd.tiddlywiki
+
+\define SortIcon() <<fa-icon "sort-$(sortorder)$" "fa-fw fa-lg">>
+
+\define SortNoMatch()
+<$set name="sortorder" value="asc" >
+<$button class="tc-btn-invisible" tooltip="Sort Ascending" actions=<<Sort-Actions>> >
+<<fa-icon "sort" "fa-fw fa-lg fa-dim">>
+</$button>
+</$set>
+\end
+
+\define SortMatch()
+<$list filter="[{$(tablestate)$!!sort-order}regexp[asc]]" variable="">
+<$set name="sortorder" value="desc" >
+<$button class="tc-btn-invisible" tooltip="Sorted Ascending" actions=<<Sort-Actions>> >
+<<SortIcon>>
+</$button>
+</$set>
+</$list>
+<$list filter="[{$(tablestate)$!!sort-order}regexp[desc]]" variable="">
+<$set name="sortorder" value="asc" >
+<$button class="tc-btn-invisible" tooltip="Sorted Descending" actions=<<Sort-Actions>> >
+<<SortIcon>>
+</$button>
+</$set>
+</$list>
+\end
+
+\define SortButton()
+<$list filter="[{$(tablestate)$!!sort-by}regexp{$(schema)$##fields$(col)$.@name}]" variable="" emptyMessage=<<SortNoMatch>> >
+<<SortMatch>>
+</$list>
+\end
+
+<<SortButton>>

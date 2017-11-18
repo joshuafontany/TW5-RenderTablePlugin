@@ -1,0 +1,14 @@
+created: 20171018004503996
+key2: test
+key3: test test {{!!title}}
+modified: 20171018004612059
+tags: array test
+test-_0_.key2: Key 2 Value
+test-_0_.key3: Key 3 Value
+test-_0_.title: Primary Key 2 Title 1
+test-_1_.key2: test
+test-_1_.key3: test 2
+test-_1_.title: Primary Key 2 Title 2
+title: Test/Tiddler_array2
+type: text/vnd.tiddlywiki
+

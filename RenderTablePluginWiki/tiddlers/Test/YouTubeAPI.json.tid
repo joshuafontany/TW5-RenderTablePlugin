@@ -1,0 +1,27 @@
+created: 20170906030309143
+flat: true
+modified: 20170924020449274
+tags: 
+title: Test/YouTubeAPI.json
+type: application/json
+
+{
+    "kind": "youtube#searchListResponse",
+    "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/PaiEDiVxOyCWelLPuuwa9LKz3Gk\"",
+    "nextPageToken": "CAUQAA",
+    "regionCode": "KE",
+    "pageInfo.totalResults": 4249,
+    "pageInfo.resultsPerPage": 5,
+    "items[0].kind": "youtube#searchResult",
+    "items[0].etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/QpOIr3QKlV5EUlzfFcVvDiJT0hw\"",
+    "items[0].id.kind": "youtube#channel",
+    "items[0].id.channelId": "UCJowOS1R0FnhipXVqEnYU1A",
+    "items[1].kind": "youtube#searchResult",
+    "items[1].etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/AWutzVOt_5p1iLVifyBdfoSTf9E\"",
+    "items[1].id.kind": "youtube#video",
+    "items[1].id.videoId": "Eqa2nAAhHN0",
+    "items[2].kind": "youtube#searchResult",
+    "items[2].etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/2dIR9BTfr7QphpBuY3hPU-h5u-4\"",
+    "items[2].id.kind": "youtube#video",
+    "items[2].id.videoId": "IirngItQuVs"
+}

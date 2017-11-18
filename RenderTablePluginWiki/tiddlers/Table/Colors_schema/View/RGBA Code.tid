@@ -1,0 +1,9 @@
+created: 20170926224355871
+modified: 20171027020804821
+tags: 
+title: Table/Colors_schema/View/RGBA Code
+type: text/vnd.tiddlywiki
+
+\define CellTemplate()
+rgba({{$(rowtiddler)$##$(fieldname)$[0]}},{{$(rowtiddler)$##$(fieldname)$[1]}},{{$(rowtiddler)$##$(fieldname)$[2]}},{{$(rowtiddler)$##$(fieldname)$[3]}})
+\end

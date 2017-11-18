@@ -1,0 +1,16 @@
+created: 20171006032901505
+modified: 20171006032930464
+tags: 
+title: Tiddler Filter Test
+type: text/vnd.tiddlywiki
+
+\define indexValue()
+{{$(currentIndex)$}}
+\end
+
+<$set name="datapath" value="">
+<$list filter="Test/Colors Test/DB">
+<$list filter="[<currentTiddler>fields[]prefix<datapath>sort[]addprefix[!!]addprefix<currentTiddler>]" variable="currentIndex">
+<li><<currentIndex>> = <<indexValue>></li>
+</$list></$list>
+</$set>

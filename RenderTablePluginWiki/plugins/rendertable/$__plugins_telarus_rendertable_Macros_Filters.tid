@@ -1,0 +1,25 @@
+created: 20171018013537116
+modified: 20171117225456829
+revision: 1
+tags: $:/tags/Macro
+title: $:/plugins/telarus/rendertable/Macros/Filters
+type: text/vnd.tiddlywiki
+
+\define TableHeaderFilter() [[$(schema)$]indexes[]removeprefix[fields]removesuffix[.@name]nsort[]]
+
+\define FieldName() [{$(schema)$##fields$(col)$.@name}addprefix<rowpath>]
+
+\define tiddlerRowsEncoded()  $(datafilter)$ +[encodeuricomponent[]nsortcs[]]
+
+\define arrayTiddlerRowsEncoded() [<rowtiddler_encoded>decodeuricomponent[]fields[]regexp[^$(datapath)$..?\d+..$(primarykey)$]removesuffix[.$(primarykey)$]nsortcs[]encodeuricomponent[]]
+
+\define arrayDataRowsEncoded() [<rowtiddler_encoded>decodeuricomponent[]indexes[]regexp[^$(datapath)$..?\d+..$(primarykey)$]removesuffix[.$(primarykey)$]nsortcs[]encodeuricomponent[]] 
+
+\define RowsDecoded() $(rowlist)$ +[sortby{$(tablestate)$!!sort-list}decodeuricomponent[]]
+
+\define tiddlerRowTiddler() [<rowentity>]
+\define arrayRowTiddler() [<rowentity>splitbefore[!!]removesuffix[!!]]
+
+\define arrayRowPath() [<rowentity>removeprefix<rowtiddler>removeprefix[!!]addsuffix[.]]
+
+<pre><$view field="text"/></pre>

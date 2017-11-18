@@ -1,0 +1,12 @@
+created: 20171112191654278
+flat: false
+modified: 20171112191654278
+title: $:/archive/json/New Tiddler
+type: text/vnd.tiddlywiki
+
+{
+    "data": [
+        "test",
+        "test"
+    ]
+}

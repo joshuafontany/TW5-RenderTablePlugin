@@ -1,0 +1,24 @@
+created: 20171006073752404
+modified: 20171117201037852
+title: Examples/Macros/Table
+type: text/vnd.tiddlywiki
+
+<$macrocall $name="table" schema="Table/Colors_schema.json" mode="array" datafilter="Test/Colors.json Test/Colors2.json" datapath="colors" />
+
+<<table "Table/Colors_schema_and_data.json" mode:"array" datapath:"table_data">>
+
+<<table schema:"Table/Donuts_schema.json"mode:"array" datafilter:"Test/Donuts" datapath:"donuts">>
+
+<<table "Table/DB_schema.json" "array" "Test/DB">>
+
+<<table "Table/Dataset_schema.json" "array" "Test/Dataset.json">>
+
+<$macrocall $name="table" schema="Examples/Table_schema.json" mode="tiddler" datafilter="[tag[test]]"/>
+
+<$macrocall $name="table" schema="Examples/Table_schema.json" mode="tiddler" datafilter="[prefix[Test/Tiddler]suffix[.json]]" datapath="" />
+
+<$macrocall $name="table" schema="Examples/Table_schema.json" mode="array" datafilter="[tag[test]tag[array]]" datapath="test" />
+
+<$macrocall $name="table" schema="Examples/Table_schema.json" mode="array" datafilter="[[Test/Tiddler_array1.json]]" datapath="test" />
+
+<pre><$view field="text"/></pre>

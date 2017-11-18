@@ -1,0 +1,60 @@
+created: 20170711213039971
+creator: Josh F
+flat: true
+modified: 20171102222413645
+modifier: Josh F
+tags: 
+title: Test/Colors.json
+type: application/json
+
+{
+    "colors[0].category": "value",
+    "colors[0].code.hex": "#000000",
+    "colors[0].code.rgba[0]": "0",
+    "colors[0].code.rgba[1]": "0",
+    "colors[0].code.rgba[2]": "0",
+    "colors[0].code.rgba[3]": "1",
+    "colors[0].color": "black",
+    "colors[0].type": "value-shade",
+    "colors[1].category": "value",
+    "colors[1].code.hex": "#FFFFFF",
+    "colors[1].code.rgba[0]": "255",
+    "colors[1].code.rgba[1]": "255",
+    "colors[1].code.rgba[2]": "255",
+    "colors[1].code.rgba[3]": "1",
+    "colors[1].color": "white",
+    "colors[1].type": "value-tint",
+    "colors[2].category": "hue",
+    "colors[2].code.hex": "#FFFF00",
+    "colors[2].code.rgba[0]": "255",
+    "colors[2].code.rgba[1]": "0",
+    "colors[2].code.rgba[2]": "0",
+    "colors[2].code.rgba[3]": "1",
+    "colors[2].color": "red",
+    "colors[2].type": "primary",
+    "colors[3].category": "hue",
+    "colors[3].code.hex": "#0000FF",
+    "colors[3].code.rgba[0]": "0",
+    "colors[3].code.rgba[1]": "0",
+    "colors[3].code.rgba[2]": "255",
+    "colors[3].code.rgba[3]": "1",
+    "colors[3].color": "blue",
+    "colors[3].type": "primary",
+    "colors[4].category": "hue",
+    "colors[4].code.hex": "#FFFF00",
+    "colors[4].code.rgba[0]": "255",
+    "colors[4].code.rgba[1]": "255",
+    "colors[4].code.rgba[2]": "0",
+    "colors[4].code.rgba[3]": "1",
+    "colors[4].color": "yellow",
+    "colors[4].type": "primary",
+    "colors[5].category": "hue",
+    "colors[5].code.hex": "#00FF00",
+    "colors[5].code.rgba[0]": "0",
+    "colors[5].code.rgba[1]": "255",
+    "colors[5].code.rgba[2]": "0",
+    "colors[5].code.rgba[3]": "1",
+    "colors[5].color": "green",
+    "colors[5].type": "secondary",
+    "text": ""
+}

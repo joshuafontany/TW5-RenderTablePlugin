@@ -1,0 +1,16 @@
+created: 20171006031327253
+modified: 20171006054547145
+tags: 
+title: Json Filter Test
+type: text/vnd.tiddlywiki
+
+\define indexValue()
+{{$(currentIndex)$}}
+\end
+
+<$set name="datapath" value="">
+<$list filter="Test/Colors.json Test/DB.json">
+<$list filter="[<currentTiddler>indexes[]prefix<datapath>sort[]addprefix[##]addprefix<currentTiddler>]" variable="currentIndex">
+<li><<currentIndex>> = <<indexValue>></li>
+</$list></$list>
+</$set>

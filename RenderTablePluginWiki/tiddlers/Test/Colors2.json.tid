@@ -1,0 +1,33 @@
+created: 20171018212401920
+flat: true
+modified: 20171018213156495
+tags: 
+title: Test/Colors2.json
+type: application/json
+
+{
+    "colors[0].category": "hue",
+    "colors[0].code.hex": "#00FFFF",
+    "colors[0].code.rgba[0]": "0",
+    "colors[0].code.rgba[1]": "255",
+    "colors[0].code.rgba[2]": "255",
+    "colors[0].code.rgba[3]": "1",
+    "colors[0].color": "cyan",
+    "colors[0].type": "secondary",
+    "colors[1].category": "hue",
+    "colors[1].code.hex": "#FF00FF",
+    "colors[1].code.rgba[0]": "255",
+    "colors[1].code.rgba[1]": "0",
+    "colors[1].code.rgba[2]": "255",
+    "colors[1].code.rgba[3]": "1",
+    "colors[1].color": "magenta",
+    "colors[1].type": "secondary",
+    "colors[2].category": "hue",
+    "colors[2].code.hex": "#FF007F",
+    "colors[2].code.rgba[0]": "255",
+    "colors[2].code.rgba[1]": "0",
+    "colors[2].code.rgba[2]": "127",
+    "colors[2].code.rgba[3]": "1",
+    "colors[2].color": "rose",
+    "colors[2].type": "tertiary"
+}

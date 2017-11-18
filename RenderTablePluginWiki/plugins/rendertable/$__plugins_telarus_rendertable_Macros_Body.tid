@@ -1,0 +1,48 @@
+created: 20171007075732862
+modified: 20171117230412688
+revision: 11
+tags: $:/tags/Macro
+title: $:/plugins/telarus/rendertable/Macros/Body
+type: text/vnd.tiddlywiki
+
+\define tiddlerRowList()
+<$list filter=<<tiddlerRowsEncoded>> variable="rowtiddler_encoded"><<rowtiddler_encoded>> </$list>
+\end
+
+\define arrayRowList()
+<$list filter=<<tiddlerRowsEncoded>> variable="rowtiddler_encoded"><$list filter=<<arrayTiddlerRowsEncoded>> variable="rowpath_encoded"><<rowtiddler_encoded>>!!<<rowpath_encoded>> </$list><$list filter=<<arrayDataRowsEncoded>> variable="rowpath_encoded"><<rowtiddler_encoded>>!!<<rowpath_encoded>> </$list></$list>
+\end
+
+\define RenderBody()
+<$list filter=<<RowsDecoded>> variable="rowentity">
+<$set name="rowtiddler" filter=<<$(mode)$RowTiddler>> >
+<$set name="rowpath" filter=<<$(mode)$RowPath>> >
+<tr>
+<$list filter=<<TableHeaderFilter>> variable="col">
+<$set name="fieldname" filter=<<FieldName>> >
+<<RenderCell>>
+</$set>
+</$list>
+</tr>
+</$set>
+</$set>
+</$list>
+\end
+
+\define UnfilteredBody()
+<$wikify name="rowlist" text=<<$(mode)$RowList>> >
+<<RenderBody>>
+</$wikify>
+\end
+
+\define TableBody()
+<tbody>
+<$list filter="[[$(tablestate)$]has:field[filter-list]]" variable="test" emptyMessage=<<UnfilteredBody>> >
+<$set name="rowlist" value={{$(tablestate)$!!filter-list}} >
+<<RenderBody>>
+</$set>
+</$list>
+</tbody>
+\end
+
+<pre><$view field="text"/></pre>

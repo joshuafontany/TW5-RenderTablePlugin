@@ -1,0 +1,37 @@
+created: 20170925213040926
+flat: true
+modified: 20171115212331791
+tags: 
+title: Table/Dataset_schema.json
+type: application/json
+
+{
+    "fields[0].@name": "id",
+    "fields[0].class": "header",
+    "fields[0].header-style": "text-decoration:underline;",
+    "fields[0].caption": "ID#",
+    "fields[1].@name": "first_name",
+    "fields[1].description": "Person's First Name",
+    "fields[1].caption": "First Name",
+    "fields[2].@name": "last_name",
+    "fields[2].description": "Person's Last Name",
+    "fields[2].caption": "Last Name",
+    "fields[3].@name": "gender",
+    "fields[3].description": "Preferred Gender",
+    "fields[3].caption": "Gender",
+    "fields[4].@name": "email",
+    "fields[4].description": "Contact Email",
+    "fields[4].template": "Table/Dataset_schema/View/Email",
+    "fields[4].caption": "Email Address",
+    "fields[5].@name": "ip_address",
+    "fields[5].class": "",
+    "fields[5].description": "Last known IP Address.",
+    "fields[5].template": "",
+    "fields[5].caption": "IP Address",
+    "table.@primarykey": "id",
+    "table.caption": "",
+    "table.class": "dataset-table",
+    "table.headers": "true",
+    "table.filterable": "true",
+    "table.style": "width: auto;"
+}

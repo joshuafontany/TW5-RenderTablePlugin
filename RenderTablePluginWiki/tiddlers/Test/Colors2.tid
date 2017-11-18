@@ -1,0 +1,30 @@
+colors-_0_.category: hue
+colors-_0_.code.hex: #00FFFF
+colors-_0_.code.rgba-_0_: 0
+colors-_0_.code.rgba-_1_: 255
+colors-_0_.code.rgba-_2_: 255
+colors-_0_.code.rgba-_3_: 1
+colors-_0_.color: cyan
+colors-_0_.type: secondary
+colors-_1_.category: hue
+colors-_1_.code.hex: #FF00FF
+colors-_1_.code.rgba-_0_: 255
+colors-_1_.code.rgba-_1_: 0
+colors-_1_.code.rgba-_2_: 255
+colors-_1_.code.rgba-_3_: 1
+colors-_1_.color: magenta
+colors-_1_.type: secondary
+colors-_2_.category: hue
+colors-_2_.code.hex: #FF007F
+colors-_2_.code.rgba-_0_: 255
+colors-_2_.code.rgba-_1_: 0
+colors-_2_.code.rgba-_2_: 127
+colors-_2_.code.rgba-_3_: 1
+colors-_2_.color: rose
+colors-_2_.type: tertiary
+created: 20171018213049705
+modified: 20171018213155158
+tags: 
+title: Test/Colors2
+type: text/vnd.tiddlywiki
+

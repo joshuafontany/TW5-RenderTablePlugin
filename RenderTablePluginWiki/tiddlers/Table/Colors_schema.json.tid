@@ -1,0 +1,31 @@
+created: 20170921053633266
+flat: true
+modified: 20171115212318679
+tags: 
+title: Table/Colors_schema.json
+type: application/json
+
+{
+    "fields[0].@name": "color",
+    "fields[0].caption": "Color",
+    "fields[0].description": "Color Name",
+    "fields[0].field-class": "header",
+    "fields[0].header-style": "text-decoration:underline;",
+    "fields[1].@name": "category",
+    "fields[1].caption": "Category",
+    "fields[2].@name": "type",
+    "fields[2].caption": "Type",
+    "fields[3].@name": "code.hex",
+    "fields[3].caption": "Hex Code",
+    "fields[4].@name": "code.rgba",
+    "fields[4].caption": "RGBA Code",
+    "fields[4].template": "Table/Colors_schema/View/RGBA Code",
+    "table.@primarykey": "color",
+    "table.caption": "My Color Table",
+    "table.class": "color-table",
+    "table.filterable": "true",
+    "table.footers": "false",
+    "table.headers": "true",
+    "table.sortable": "true",
+    "table.style": "width: auto;"
+}

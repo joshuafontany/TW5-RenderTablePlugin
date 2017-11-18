@@ -1,0 +1,8 @@
+created: 20171111015327868
+modified: 20171117201318084
+tags: $:/tags/EditTemplate $:/tags/ViewTemplate
+title: Examples/Template
+type: text/vnd.tiddlywiki
+
+<$list filter="[is[current]tag[EditTableTest]]" variable=""><$macrocall $name="table" schema="Examples/Table-Edit_schema.json" mode="array" datafilter="[[Examples/Table-Edit_data.json]]"/>
+!!! Rendered via Tiddlywiki's View and Edit Template functions. !!</$list>
