@@ -1,5 +1,5 @@
 created: 20170925054623838
-modified: 20171115224752141
+modified: 20171119000146470
 revision: 0
 tags: $:/tags/Stylesheet
 title: $:/plugins/telarus/rendertable/Stylesheets/Table
@@ -30,17 +30,17 @@ width: 100%;
 clear: left;
 }
 
-table {
+.tc-tiddler-body table {
 overflow-y: auto; 
 margin-top: 0em; 
 margin-bottom: 0em;
 }
 
-table td { 
+.tc-tiddler-body table td { 
   vertical-align: top; 
 }
 
-table th, .header, .caption {
+.tc-tiddler-body table th, .header, .caption {
 background-color: <<color table-header-background>>;
 font-weight: bold;
 text-align: left;
