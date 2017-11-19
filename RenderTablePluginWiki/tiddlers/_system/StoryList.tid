@@ -1,3 +1,3 @@
-list: $:/plugins/telarus/rendertable/Stylesheets/Table HelloThere Installation Examples/Macros/Table Examples/Table-Edit [[Table Schemas]] $:/plugins/telarus/fontawesome $:/plugins/telarus/jsonmangler $:/plugins/telarus/rendertable
+list: HelloThere Installation Examples/Macros/Table Examples/Table-Edit [[Table Schemas]] $:/plugins/telarus/fontawesome $:/plugins/telarus/jsonmangler $:/plugins/telarus/rendertable
 title: $:/StoryList
 
